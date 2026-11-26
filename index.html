@@ -83,7 +83,34 @@ button {
 button:hover { transform: translateY(-2px); }
 button:active { transform: translateY(1px); }
 button:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
-@media (prefers-reduced-motion: reduce) { .lantern { animation: none; } }
+.love {
+  position: fixed; inset: 0; z-index: 2;
+  display: grid; place-items: center;
+  background: rgba(7, 11, 28, .6);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  cursor: pointer;
+  animation: fade .4s ease both;
+}
+.heart-wrap {
+  position: relative; width: min(82vw, 380px); aspect-ratio: 1.1;
+  animation: pop .7s cubic-bezier(.2, 1.4, .4, 1) both, beat 1.6s ease-in-out .8s infinite;
+}
+.heart-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 0 28px rgba(232,163,180,.55)); }
+.names {
+  position: absolute; inset: 8% 14% 26%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 700; color: #fff8ec;
+  text-shadow: 0 2px 10px rgba(80, 10, 30, .45);
+  line-height: 1.15;
+}
+.names .n { font-size: clamp(2.2rem, 11vw, 3.3rem); }
+.names .and { font-size: clamp(1.4rem, 6vw, 1.9rem); color: var(--gold-soft); }
+.love-hint { position: absolute; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); left: 0; right: 0; text-align: center; font-family: var(--label); color: var(--muted); font-size: .95rem; margin: 0; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { from { transform: scale(.2); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.07); } 30% { transform: scale(1); } 45% { transform: scale(1.05); } }
+@media (prefers-reduced-motion: reduce) { .lantern, .love, .heart-wrap { animation: none; } }
 </style>
 </head>
 <body>
@@ -110,10 +137,30 @@ button:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
       وأعاده عليكِ بالخير واليُمن والبركات.
     </p>
 
-    <button id="celebrate" type="button">اضغطي هنا 🎉</button>
+    <button id="celebrate" type="button">اضغطي هنا ❤️</button>
     <p class="sign">مع كل الحب</p>
   </section>
 </main>
+
+<div class="love" id="love" role="dialog" aria-label="لورنس ورقية" hidden>
+  <div class="heart-wrap">
+    <svg viewBox="0 0 220 200" aria-hidden="true">
+      <defs>
+        <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f2a2b6"/>
+          <stop offset="1" stop-color="#c2456a"/>
+        </linearGradient>
+      </defs>
+      <path d="M110 190C40 140 6 102 6 60 6 28 30 6 60 6c22 0 40 12 50 30C120 18 138 6 160 6c30 0 54 22 54 54 0 42-34 80-104 130z" fill="url(#hg)" stroke="#e9c27a" stroke-width="4"/>
+    </svg>
+    <div class="names">
+      <span class="n">لورنس</span>
+      <span class="and">و</span>
+      <span class="n">رقية</span>
+    </div>
+  </div>
+  <p class="love-hint">اضغطي في أي مكان للرجوع</p>
+</div>
 
 <script>
 (() => {
@@ -159,7 +206,12 @@ button:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
     requestAnimationFrame(frame);
   }
 
+  const love = document.getElementById('love');
+  love.addEventListener('click', () => { love.hidden = true; });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') love.hidden = true; });
+
   document.getElementById('celebrate').addEventListener('click', () => {
+    love.hidden = false;
     const n = reduce ? 1 : 5;
     for (let i = 0; i < n; i++) {
       setTimeout(() => burst(w * (.2 + Math.random() * .6), h * (.15 + Math.random() * .4)), i * 250);
