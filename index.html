@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عيدك مبارك يا رقية</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@500;700&display=swap">
+<style>
+/* Layout: one centered night-sky card, crescent above, name in Ruqaa script, message below, a button that sets off lantern-light sparks. Deliberately single dark theme (Eid night). */
+:root {
+  --night: #0d1530;
+  --night-deep: #070b1c;
+  --gold: #e9c27a;
+  --gold-soft: #f6e2b3;
+  --rose: #e8a3b4;
+  --ink: #f4efe4;
+  --muted: #b7b3c9;
+  --display: "Aref Ruqaa", "Amiri", serif;
+  --body: "Amiri", "Times New Roman", serif;
+  --label: "Reem Kufi", "Amiri", sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(120% 80% at 50% 0%, #1b2552 0%, var(--night) 45%, var(--night-deep) 100%);
+  background-color: var(--night-deep);
+  color: var(--ink);
+  font-family: var(--body);
+  direction: rtl;
+  overflow-x: hidden;
+}
+#sky { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+main {
+  position: relative; z-index: 1;
+  min-height: 100%;
+  display: grid; place-items: center;
+  padding-block: 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+.card {
+  width: 100%; max-width: 30rem;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 1.1rem;
+}
+.lanterns { display: flex; justify-content: center; gap: 2.4rem; margin-bottom: -.4rem; }
+.lantern { width: 34px; transform-origin: top center; animation: sway 4s ease-in-out infinite; }
+.lantern:nth-child(2) { width: 44px; animation-delay: -1.3s; }
+.lantern:nth-child(3) { animation-delay: -2.6s; }
+@keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+.eyebrow {
+  font-family: var(--label); font-weight: 500;
+  color: var(--gold); letter-spacing: .08em; font-size: 1rem;
+  margin: 0;
+}
+h1 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(3.6rem, 18vw, 6.5rem);
+  line-height: 1.1; margin: 0;
+  color: var(--gold-soft);
+  text-shadow: 0 0 28px rgba(233,194,122,.45);
+  text-wrap: balance;
+}
+.sub { font-family: var(--display); font-size: clamp(1.6rem, 7vw, 2.2rem); margin: -.6rem 0 0; color: var(--rose); }
+.divider { width: 70%; max-width: 260px; height: 14px; }
+.message {
+  font-size: 1.3rem; line-height: 2.05; margin: 0;
+  max-width: 26rem; color: var(--ink);
+}
+.message em { font-style: normal; color: var(--gold); }
+.sign { font-family: var(--label); color: var(--muted); font-size: 1rem; margin: 0; }
+button {
+  font-family: var(--label); font-weight: 700; font-size: 1.1rem;
+  color: var(--night-deep); background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+  border: 0; border-radius: 999px; padding: .8rem 2rem; cursor: pointer;
+  box-shadow: 0 6px 24px rgba(233,194,122,.35);
+  transition: transform .15s ease;
+}
+button:hover { transform: translateY(-2px); }
+button:active { transform: translateY(1px); }
+button:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .lantern { animation: none; } }
+</style>
+</head>
+<body>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+<main>
+  <section class="card">
+    <div class="lanterns" aria-hidden="true">
+      <svg class="lantern" viewBox="0 0 40 90"><line x1="20" y1="0" x2="20" y2="22" stroke="#e9c27a" stroke-width="1.5"/><path d="M14 22h12l3 8H11z" fill="#e9c27a"/><path d="M11 30h18l4 30-13 14L7 60z" fill="#f6e2b3" opacity=".9"/><path d="M11 30h18l4 30-13 14L7 60z" fill="none" stroke="#e9c27a" stroke-width="2"/><circle cx="20" cy="50" r="5" fill="#fff6dc"/></svg>
+      <svg class="lantern" viewBox="0 0 40 110"><line x1="20" y1="0" x2="20" y2="30" stroke="#e9c27a" stroke-width="1.5"/><path d="M33 52a14 14 0 1 1-6-26 11 11 0 1 0 6 26z" fill="#e9c27a"/><circle cx="31" cy="34" r="2" fill="#f6e2b3"/></svg>
+      <svg class="lantern" viewBox="0 0 40 90"><line x1="20" y1="0" x2="20" y2="22" stroke="#e9c27a" stroke-width="1.5"/><path d="M14 22h12l3 8H11z" fill="#e9c27a"/><path d="M11 30h18l4 30-13 14L7 60z" fill="#e8a3b4" opacity=".85"/><path d="M11 30h18l4 30-13 14L7 60z" fill="none" stroke="#e9c27a" stroke-width="2"/><circle cx="20" cy="50" r="5" fill="#fff6dc"/></svg>
+    </div>
+
+    <p class="eyebrow">عيدكِ مبارك</p>
+    <h1>رقية</h1>
+    <p class="sub">كل عام وأنتِ بخير</p>
+
+    <svg class="divider" viewBox="0 0 260 14" aria-hidden="true"><line x1="0" y1="7" x2="110" y2="7" stroke="#e9c27a" stroke-width="1"/><path d="M130 0l7 7-7 7-7-7z" fill="#e9c27a"/><line x1="150" y1="7" x2="260" y2="7" stroke="#e9c27a" stroke-width="1"/></svg>
+
+    <p class="message">
+      يا رقية، أسأل الله أن يكون عيدكِ فرحًا لا ينقطع،<br>
+      وأن يملأ أيامكِ <em>نورًا وسعادة</em>، ويحقق لكِ كل ما تتمنين.<br>
+      تقبّل الله منا ومنكِ صالح الأعمال،<br>
+      وأعاده عليكِ بالخير واليُمن والبركات.
+    </p>
+
+    <button id="celebrate" type="button">اضغطي هنا 🎉</button>
+    <p class="sign">مع كل الحب</p>
+  </section>
+</main>
+
+<script>
+(() => {
+  const canvas = document.getElementById('sky');
+  const ctx = canvas.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, stars = [], sparks = [];
+  const colors = ['#e9c27a', '#f6e2b3', '#e8a3b4', '#ffffff'];
+
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    stars = Array.from({ length: Math.round(w * h / 5000) }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      r: Math.random() * 1.3 + .3, p: Math.random() * Math.PI * 2
+    }));
+  }
+
+  function burst(x, y) {
+    for (let i = 0; i < 70; i++) {
+      const a = Math.random() * Math.PI * 2, s = Math.random() * 5 + 1.5;
+      sparks.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s,
+        life: 1, c: colors[i % colors.length] });
+    }
+  }
+
+  function frame(t) {
+    ctx.clearRect(0, 0, w, h);
+    for (const s of stars) {
+      const a = reduce ? .7 : .45 + .45 * Math.sin(t / 900 + s.p);
+      ctx.globalAlpha = a; ctx.fillStyle = '#fff';
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill();
+    }
+    sparks = sparks.filter(p => p.life > 0);
+    for (const p of sparks) {
+      p.x += p.vx; p.y += p.vy; p.vy += .06; p.vx *= .985; p.life -= .012;
+      ctx.globalAlpha = Math.max(p.life, 0); ctx.fillStyle = p.c;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2.2, 0, 7); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+
+  document.getElementById('celebrate').addEventListener('click', () => {
+    const n = reduce ? 1 : 5;
+    for (let i = 0; i < n; i++) {
+      setTimeout(() => burst(w * (.2 + Math.random() * .6), h * (.15 + Math.random() * .4)), i * 250);
+    }
+  });
+
+  addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>
